@@ -18,7 +18,7 @@ const AlarmsList = () => {
         )
     }else{
     return (
-        <ScrollView style={styles.alarmSroll}>
+        <ScrollView style={styles.alarmScroll}>
             <View style={{paddingBottom: 120}}>
             {alarms.map(alarm => (
                 <TouchableNativeFeedback 
@@ -37,7 +37,7 @@ const AlarmsList = () => {
 }
 
 const styles =StyleSheet.create ({
-    alarmSroll:{
+    alarmScroll:{
         marginTop: Constants.statusBarHeight
     },
 

@@ -2,8 +2,35 @@ import React from "react";
 import { View, StyleSheet, Text ,TouchableNativeFeedback, Alert} from "react-native";
 import theme from "../theme";
 import {LinearGradient} from "expo-linear-gradient";
+import * as FileSystem from "expo-file-system"
+import {escribirEnArchivo, leerArchivo} from "./func";
+import control from "./func";
 
 const Boton = ()=>{
+
+//     const escribirEnArchivo = async () => {
+//         const rutaArchivo = FileSystem.documentDirectory + 'miarchivo.js';
+//         const contenido = 'Este es el contenido que se escribirá en el archivo2';
+
+//         try {
+//         await FileSystem.writeAsStringAsync(rutaArchivo, contenido);
+//         console.log('Archivo escrito con éxito');
+//         console.log({rutaArchivo})
+//         } catch (error) {
+//         console.log('Error al escribir en el archivo:', error);
+//         }
+//     };
+
+//     const leerArchivo = async () => {
+//     try {
+//       const rutaArchivo = FileSystem.documentDirectory + 'miarchivo.js';
+//       const contenido = await FileSystem.readAsStringAsync(rutaArchivo);
+//       console.log('Contenido del archivo:', contenido);
+//     } catch (error) {
+//       console.log('Error al leer el archivo:', error);
+//     }
+//   };
+
     return (
         <View style={styles.container}>
             <LinearGradient 
@@ -11,7 +38,8 @@ const Boton = ()=>{
                 style={styles.linearGradient}
                 locations={[0.1,0.4]}
             >
-                <TouchableNativeFeedback onPress={() => Alert.alert('añadir alarma')}>
+                {/* <TouchableNativeFeedback onPress={() => Alert.alert(alarm.name)}> */}
+                <TouchableNativeFeedback onPress={control.leerArchivo}>
                     <View style={styles.boton}>
                         
                         <View style={styles.vertical}/>
