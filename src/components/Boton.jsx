@@ -1,19 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text ,TouchableNativeFeedback, Alert} from "react-native";
 import theme from "../theme";
 import {LinearGradient} from "expo-linear-gradient";
-import { escribirEnArchivo, leerArchivo } from "./func";
+import {useEscribirEnArchivo, useLeerArchivo } from "./func";
+
+
 
 const Boton = ()=>{
 
-    // useEffect(()=>{
-    //     leerArchivo;
-    // }) 
+    const escribirEnArchivo = useEscribirEnArchivo();
 
     return (
         <View style={styles.container}>
             <LinearGradient 
-                colors={['transparent',theme.backgroundColors.second]} 
+                colors={['transparent',theme.backgroundColors.second]}
                 style={styles.linearGradient}
                 locations={[0.1,0.4]}
             >

@@ -1,17 +1,15 @@
 import React, {useEffect} from "react";
 import {StyleSheet, View, Text, TouchableNativeFeedback, Alert , ScrollView} from 'react-native'
-import alarms from "../../data/alarms";
 import theme from '../theme'
 import Constants from 'expo-constants';
-import { leerArchivo } from "./func";
+import { useLeerArchivo } from "./func";
 
 const AlarmsList = () => {
 
-     useEffect(()=>{
-        leerArchivo;
-    }) 
+    const alarm = useLeerArchivo();
 
-    if (alarms.length === 0) {
+
+    if (alarm.length === 0) {
         return (
              <View style={styles.empty}>
                 <Text style={styles.emptyT}>¡NO TIENES NINGUNA ALARMA!</Text>
@@ -22,10 +20,11 @@ const AlarmsList = () => {
             </View>
         )
     }else{
+
     return (
         <ScrollView style={styles.alarmScroll}>
             <View style={{paddingBottom: 120}}>
-            {alarms.map(alarm => (
+            {alarm.map(alarm => (
                 <TouchableNativeFeedback 
                     onPress={() => Alert.alert(alarm.name)}
                     key={alarm.id}
