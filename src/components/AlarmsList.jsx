@@ -1,10 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {StyleSheet, View, Text, TouchableNativeFeedback, Alert , ScrollView} from 'react-native'
 import alarms from "../../data/alarms";
 import theme from '../theme'
 import Constants from 'expo-constants';
+import { leerArchivo } from "./func";
 
 const AlarmsList = () => {
+
+     useEffect(()=>{
+        leerArchivo;
+    }) 
 
     if (alarms.length === 0) {
         return (
