@@ -4,11 +4,11 @@ import * as FileSystem from "expo-file-system"
 
 export const useEscribirEnArchivo = () => {
 
-    const rutaArchivo = FileSystem.documentDirectory + 'miarchivo.js';
+  const rutaArchivo = FileSystem.documentDirectory + 'miarchivo.js';
 
-    const [alarms, setAlarms] = useState([]);
+  const [alarms, setAlarms] = useState([]);
 
-    const escribirEnArchivo = async () =>{
+  const escribirEnArchivo = async () =>{
 
     const nueva = {id: 4,
             name: 'Alarma 1'};
@@ -22,8 +22,8 @@ export const useEscribirEnArchivo = () => {
     } catch (error) {
         console.log('Error al escribir en el archivo:', error);
     }
-    };
-    return escribirEnArchivo
+  };
+  return escribirEnArchivo
 };
 
 export const useLeerArchivo = () => {
@@ -36,9 +36,9 @@ export const useLeerArchivo = () => {
     const leerArchivo = async () => {
       try {
         const contenido = await FileSystem.readAsStringAsync(rutaArchivo);
-        
         const contenidoJSON = JSON.parse(contenido);
         setAlarms(contenidoJSON);
+        console.log(contenidoJSON)
       } catch (error) {
         console.log('Error al leer el archivo:', error);
       }
