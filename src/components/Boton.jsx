@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useContext } from "react";
 import { View, StyleSheet, Text ,TouchableNativeFeedback, Alert} from "react-native";
 import theme from "../theme";
 import {LinearGradient} from "expo-linear-gradient";
 import {useEscribirEnArchivo, useLeerArchivo } from "./func";
 
-
+import { GlobalContext } from './GlobalState';
 
 const Boton = ()=>{
 
-    const escribirEnArchivo = useEscribirEnArchivo();
+    // const escribirEnArchivo = useEscribirEnArchivo();
+
+    const { globalState, setGlobalState } = useContext(GlobalContext);
+
+    // Acceder y actualizar el estado global
+    const updateGlobalState = () => {
+        setGlobalState(true);
+    };
 
     return (
         <View style={styles.container}>
@@ -17,7 +24,7 @@ const Boton = ()=>{
                 style={styles.linearGradient}
                 locations={[0.1,0.4]}
             >
-                <TouchableNativeFeedback onPress={escribirEnArchivo}>
+                <TouchableNativeFeedback onPress={updateGlobalState}>
                     <View style={styles.boton}>
                         
                         <View style={styles.vertical}/>

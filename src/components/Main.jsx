@@ -1,22 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { StyleSheet, Text, View , Modal, TouchableOpacity } from 'react-native'
 import theme from '../theme.js'
-import MainBody from './MainBody'
 import Boton from './Boton.jsx'
 import AlarmsList from './AlarmsList.jsx'
-
+import { CrearAlarma } from './CrearAlarma.jsx'
+import { GlobalContext } from './GlobalState.jsx'
 
 
  const Main =() => {
 
-    const [modalVisible, setModalVisible] = useState(false);
-
-    const openModal = () => {
-        setModalVisible(true);
-    };
+    const { globalState, setGlobalState } = useContext(GlobalContext);
 
     const closeModal = () => {
-        setModalVisible(false);
+        setGlobalState(false)
     };
 
     return (
@@ -24,18 +20,12 @@ import AlarmsList from './AlarmsList.jsx'
             <Boton />
             <AlarmsList />
             <Modal 
-                visible={modalVisible}
+                visible={globalState}
                 transparent={true}
                 animationType="fade"
                 onRequestClose={closeModal}
             >
-                <TouchableOpacity 
-                    style={{ flex: 1, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
-                    activeOpacity={1}
-                    onPress={closeModal}
-                >
-                    
-                </TouchableOpacity>
+                    <CrearAlarma/>
             </Modal>
             
         </View>

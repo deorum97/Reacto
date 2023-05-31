@@ -1,7 +1,7 @@
 import React from 'react'
-import Main from './src/components/Main'
+import { MainBody } from './src/components/MainBody'
 
 export default function App() {
-  return <Main />
+  return <MainBody/>
 } 
 

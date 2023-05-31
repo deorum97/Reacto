@@ -1,2 +1,3 @@
 npm install --save-dev babel-eslint eslint-config-standard eslint-config-standard-jsx eslint-config-standard-react eslint-plugin-promise eslint-plugin-import eslint-plugin-node eslint-plugin-react
 video youtube manejo de usestate https://www.youtube.com/watch?v=U3IJ7dsDVaE
+https://www.youtube.com/watch?v=UEfFjfW7Zes

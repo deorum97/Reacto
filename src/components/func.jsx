@@ -3,50 +3,48 @@ import * as FileSystem from "expo-file-system"
 import Constants from 'expo-constants'
 
 
-const getPersistentDataDirectory = async () => {
-  const directory = await FileSystem.getDocumentDirectoryAsync();
-  return directory;
-};
+// const getPersistentDataDirectory = async () => {
+//   const directory = await FileSystem.getDocumentDirectoryAsync();
+//   return directory;
+// };
 
-export const useEscribirEnArchivo = () => {
+// export const useEscribirEnArchivo = () => {
 
-  const [alarms, setAlarms] = useState([]);
+//   const [alarms, setAlarms] = useState([]);
 
-  const escribirEnArchivo = async () =>{
+//   const escribirEnArchivo = async () =>{
 
-    const dataDirectory = await getPersistentDataDirectory();
-    const rutaArchivo = '${dataDirectory}/alarm.js';
+//     const dataDirectory = await getPersistentDataDirectory();
+//     const rutaArchivo = '${dataDirectory}/alarm.js';
 
-    const contenido = await FileSystem.readAsStringAsync(rutaArchivo);
-    const contenidoJSON = JSON.parse(contenido);
-    setAlarms(contenidoJSON);
-    console.log(contenidoJSON)
+//     const contenido = await FileSystem.readAsStringAsync(rutaArchivo);
+//     const contenidoJSON = JSON.parse(contenido);
+//     setAlarms(contenidoJSON);
+//     console.log(contenidoJSON)
 
-    const nueva = {id: contenidoJSON.length+1,
-            name: 'Alarma 1'};
+//     const nueva = {id: contenidoJSON.length+1,
+//             name: 'Alarma 1'};
 
-    setAlarms([...alarms, nueva])
+//     setAlarms([...alarms, nueva])
 
-    try {
-        await FileSystem.writeAsStringAsync(rutaArchivo, JSON.stringify(alarms));
-        console.log('Archivo escrito con éxito');
-    } catch (error) {
-        console.log('Error al escribir en el archivo:', error);
-    }
-  };
-  return escribirEnArchivo
-};
+//     try {
+//         await FileSystem.writeAsStringAsync(rutaArchivo, JSON.stringify(alarms));
+//         console.log('Archivo escrito con éxito');
+//     } catch (error) {
+//         console.log('Error al escribir en el archivo:', error);
+//     }
+//   };
+//   return escribirEnArchivo
+// };
 
 export const useLeerArchivo = () => {
+
+  const rutaArchivo = FileSystem.documentDirectory + 'miarchivo.js';
 
   const [alarm, setAlarms] = useState([])
 
   useEffect(() => {
     const leerArchivo = async () => {
-
-      const dataDirectory = await getPersistentDataDirectory();
-      const rutaArchivo = '${dataDirectory}/alarm.js';
-
       try {
         const contenido = await FileSystem.readAsStringAsync(rutaArchivo);
         const contenidoJSON = JSON.parse(contenido);
@@ -62,4 +60,5 @@ export const useLeerArchivo = () => {
 
   return alarm
 };
+
 

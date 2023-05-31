@@ -1,20 +1,12 @@
 import React from "react";
-import { StyleSheet, View,Text } from "react-native";
-import Constants from 'expo-constants';
-import theme from "../theme";
-import AlarmsList from "./AlarmsList";
+import Main from './Main'
 
-const MainBody=()=>{
+import { GlobalProvider } from './GlobalState.jsx'
+
+export const MainBody=()=>{
     return (
-        <View style={{flex:1}}>
-            <View>
-                <AlarmsList />
-            </View>
-        </View>
+        <GlobalProvider>
+            <Main />
+        </GlobalProvider>
     )
 }
-
-const styles = StyleSheet.create ({
-})
-
-export default MainBody

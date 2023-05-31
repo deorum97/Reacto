@@ -21,21 +21,3 @@ export const EscribirEnArchivo = async (data) => {
     console.log('Error al escribir en el archivo:', error);
   }
 };
-
-export const LeerArchivo = async () => {
-  const path = RNFS.DocumentDirectoryPath + '/miarchivo.txt';
-
-  try {
-    if (await RNFS.exists(path)) {
-      const contenido = await RNFS.readFile(path, 'utf8');
-      const datos = JSON.parse(contenido);
-      return datos;
-    } else {
-      console.log('El archivo no existe');
-      return [];
-    }
-  } catch (error) {
-    console.log('Error al leer el archivo:', error);
-    return [];
-  }
-};
