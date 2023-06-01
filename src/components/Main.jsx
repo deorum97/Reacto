@@ -25,7 +25,8 @@ import { GlobalContext } from './GlobalState.jsx'
                 animationType="fade"
                 onRequestClose={closeModal}
             >
-                    <CrearAlarma/>
+                <TouchableOpacity style={styles.container} onPress={closeModal}/>
+                <CrearAlarma/>
             </Modal>
             
         </View>
